@@ -7,6 +7,9 @@ on:
     types: [opened, synchronize, reopened]
   workflow_dispatch: {}
 
+env:
+  REPO: ${{ github.repository }}
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -17,10 +20,6 @@ jobs:
           node-version: 18
           cache: npm
       - run: npm ci
-      - run: npm run check
-
-  zip:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: zip -h
+      - run: npm run build
+      - run: zip -r $REPO.zip dist
+      - run: ls -al
