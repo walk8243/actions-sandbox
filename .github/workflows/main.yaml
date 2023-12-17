@@ -22,5 +22,5 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: ls -al
-      - run: zip -rv $REPO ./dist
+      - run: zip test packer.zip
       - run: ls -al
