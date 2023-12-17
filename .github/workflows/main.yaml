@@ -22,5 +22,5 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: ls -al
-      - run: zip -r $REPO.zip dist
+      - run: zip $REPO -r dist
       - run: ls -al
