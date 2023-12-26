@@ -1,0 +1,9 @@
+name: Create Pull Request to other repo
+
+on: [pull_request]
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "xyz"
