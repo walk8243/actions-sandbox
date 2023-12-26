@@ -31,3 +31,5 @@ jobs:
     steps:
       - run: |
           gh workflow run main.yml --repo walk8243/nodejs-terminal -f env=greeting
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
