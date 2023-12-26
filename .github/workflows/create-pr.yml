@@ -9,4 +9,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: walk8243/nodejs-terminal
-      - run: ls
+      - run: cat src/index.ts
+      - run: git switch -c test
+      - run: sed -i 's/green/yellow/g' src/index.ts
+      - run: cat src/index.ts
+      - run: |
+          git add .
+          git commit --message 'file changed'
