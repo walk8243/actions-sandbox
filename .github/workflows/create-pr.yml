@@ -6,4 +6,7 @@ jobs:
   create:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "xyz"
+      - uses: actions/checkout@v4
+        with:
+          repository: walk8243/nodejs-terminal
+      - run: ls
