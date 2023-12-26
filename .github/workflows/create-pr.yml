@@ -6,13 +6,19 @@ jobs:
   create:
     runs-on: ubuntu-latest
     steps:
+      - name: setup git user
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
       - uses: actions/checkout@v4
         with:
           repository: walk8243/nodejs-terminal
-      - run: cat src/index.ts
+      - name: before file
+        run: cat src/index.ts
       - run: git switch -c test
       - run: sed -i 's/green/yellow/g' src/index.ts
-      - run: cat src/index.ts
+      - name: after file
+        run: cat src/index.ts
       - run: |
           git add .
           git commit --message 'file changed'
