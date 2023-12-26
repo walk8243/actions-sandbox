@@ -22,6 +22,5 @@ jobs:
       - run: |
           git add .
           git commit --message 'file changed'
-          git push origin test
+          git push
       - run: gh pr create --title "[Test] Create Pull Request From GitHub Actions" --body "GitHub Actions created."
-    permissions: write-all
