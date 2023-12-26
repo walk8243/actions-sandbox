@@ -4,6 +4,7 @@ on: [pull_request]
 
 jobs:
   create:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: setup git user
@@ -24,3 +25,9 @@ jobs:
           git commit --message 'file changed'
           git push
       - run: gh pr create --title "[Test] Create Pull Request From GitHub Actions" --body "GitHub Actions created."
+
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          gh workflow run main.yml --repo walk8243/nodejs-terminal -f env=greeting
