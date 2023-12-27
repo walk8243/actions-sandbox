@@ -8,5 +8,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: replace cask
-        run: cat test.rb | sed 's/CASK_VERSION/1.2.3/g' 's/CASK_SHA256/37cbd6615440141386697092587c4a7702d1d79a/g' > output.rb
+        run: cat test.rb | sed 's/CASK_VERSION/1.2.3/g' | sed 's/CASK_SHA256/37cbd6615440141386697092587c4a7702d1d79a/g' > output.rb
       - run: cat output.rb
