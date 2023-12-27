@@ -11,4 +11,4 @@ jobs:
         run: echo ::set-output name=CASK_TEMPLATE::$(cat test.rb)
         id: file
       - name: replace cask
-        run: format(${{ steps.file.outputs.CASK_TEMPLATE }}, '1.2.3', '37cbd6615440141386697092587c4a7702d1d79a')
+        run: format('${{ steps.file.outputs.CASK_TEMPLATE }}', '1.2.3', '37cbd6615440141386697092587c4a7702d1d79a')
