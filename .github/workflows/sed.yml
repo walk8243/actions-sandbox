@@ -7,8 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: read cask file
-        run: echo ::set-output name=CASK_TEMPLATE::$(cat test.rb)
-        id: file
       - name: replace cask
-        run: format('${{ steps.file.outputs.CASK_TEMPLATE }}', '1.2.3', '37cbd6615440141386697092587c4a7702d1d79a')
+        run: cat test.rb | sed 's/CASK_VERSION/1.2.3/g' 's/CASK_SHA256/37cbd6615440141386697092587c4a7702d1d79a/g' > output.rb
+      - run: cat output.rb
