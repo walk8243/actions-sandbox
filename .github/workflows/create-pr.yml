@@ -4,6 +4,7 @@ on: [pull_request]
 
 jobs:
   dispatch:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - run: |
@@ -12,3 +13,10 @@ jobs:
             -f sha256=${{ github.event.pull_request.head.sha }}
     env:
       GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: shasum -a 256 "package.json"
+      - run: shasum -a 256 "package.json" | awk '{ print $1 }'
