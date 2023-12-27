@@ -1,0 +1,9 @@
+name: sed command test
+
+on: [pull_request]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sed -i 's/version "\d+\.\d+\.\d+"/version "1.2.3"/g' test.rb
