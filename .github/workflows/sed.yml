@@ -7,5 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: sed -i 's/version "\d+\.\d+\.\d+"/version "1.2.3"/g' test.rb
+      - run: sed -i 's/homepage/abc/g' test.rb
+      - run: sed -i 's/version "\\d+\\.\\d+\\.\\d+"/version "1.2.3"/g' test.rb
       - run: cat test.rb
