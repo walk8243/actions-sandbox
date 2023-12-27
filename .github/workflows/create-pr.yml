@@ -1,0 +1,22 @@
+name: Create Pull Request to other repo
+
+on: [pull_request]
+
+jobs:
+  dispatch:
+    if: false
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          gh workflow run main.yml --repo walk8243/nodejs-terminal \
+            -f version=0.9.0 \
+            -f sha256=${{ github.event.pull_request.head.sha }}
+    env:
+      GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: shasum -a 256 "package.json"
+      - run: shasum -a 256 "package.json" | awk '{ print $1 }'
