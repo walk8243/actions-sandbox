@@ -3,29 +3,6 @@ name: Create Pull Request to other repo
 on: [pull_request]
 
 jobs:
-  create:
-    if: false
-    runs-on: ubuntu-latest
-    steps:
-      - name: setup git user
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-      - uses: actions/checkout@v4
-        with:
-          repository: walk8243/nodejs-terminal
-          ref: test
-      - name: before file
-        run: cat src/index.ts
-      - run: sed -i 's/green/yellow/g' src/index.ts
-      - name: after file
-        run: cat src/index.ts
-      - run: |
-          git add .
-          git commit --message 'file changed'
-          git push
-      - run: gh pr create --title "[Test] Create Pull Request From GitHub Actions" --body "GitHub Actions created."
-
   dispatch:
     runs-on: ubuntu-latest
     steps:
