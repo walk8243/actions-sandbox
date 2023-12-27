@@ -7,4 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: format($(cat test.rb), '1.2.3', '37cbd6615440141386697092587c4a7702d1d79a')
+      - name: replace cask
+        run: |
+          cask=$(cat test.rb)
+          format(${cask}, '1.2.3', '37cbd6615440141386697092587c4a7702d1d79a')
