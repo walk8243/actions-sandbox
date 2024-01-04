@@ -1,4 +1,4 @@
-name: Source Code Check
+name: Package Version UP
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ on:
         default: minor
 
 jobs:
-  test:
+  verup:
     runs-on: ubuntu-latest
     steps:
       - name: setup git user
@@ -27,7 +27,10 @@ jobs:
           node-version: 18
           cache: npm
       - name: verup
-        run: npm version patch
-      - run: git push
+        run: npm version ${{ inputs.version }}
+      - name: git push
+        run: |
+          git push
+          git push --tags
     env:
       GH_TOKEN: ${{ github.token }}
